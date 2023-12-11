@@ -6,29 +6,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import test.mockedObjects.ItemHelper;
+import test.mockedObjects.MockItemHelper;
 
 class ItemTest {
 
-	ItemHelper item;
+	MockItemHelper item;
 
 	@BeforeEach
 	void beforeEach() {
-		item = new ItemHelper("oof");
+		item = new MockItemHelper("oof");
 	}
 
+	// setId
+	
 	@Test
 	@DisplayName("lower case setId")
 	void setIdLowerCase() {
 		String id = "yeet";
 		item.setId(id);
 		assertEquals(id, item.getId());
-	}
-
-	@Test
-	@DisplayName("lower case constructor")
-	void itemConstructorLowerCase() {
-		assertEquals("oof", item.getId());
 	}
 
 	@Test
@@ -40,10 +36,26 @@ class ItemTest {
 	}
 
 	@Test
+	@DisplayName("test if item id is empty string")
+	void setIdEmptyString() {
+		String id = "";
+		item.setId(id);
+		assertTrue(item.getId().isBlank());
+	}
+	
+	// Constructor
+
+	@Test
+	@DisplayName("lower case constructor")
+	void itemConstructorLowerCase() {
+		assertEquals("oof", item.getId());
+	}
+
+	@Test
 	@DisplayName("test if item id isn't uppercase")
 	void itemConstructorUpperCase() {
 		String id = "YEET";
-		ItemHelper item = new ItemHelper(id);
+		MockItemHelper item = new MockItemHelper(id);
 		assertEquals(id.toLowerCase(), item.getId());
 	}
 
@@ -51,18 +63,12 @@ class ItemTest {
 	@DisplayName("test if item id is empty string")
 	void itemConstructorEmptyString() {
 		String id = "";
-		ItemHelper item = new ItemHelper(id);
+		MockItemHelper item = new MockItemHelper(id);
 		assertTrue(item.getId().isBlank());
 	}
 
-	@Test
-	@DisplayName("test if item id is empty string")
-	void setIdEmptyString() {
-		String id = "";
-		item.setId(id);
-		assertTrue(item.getId().isBlank());
-	}
-
+	// soString
+	
 	@Test
 	@DisplayName("toString upper case")
 	void toStringUpperCase() {
@@ -86,6 +92,8 @@ class ItemTest {
 		item.setId(id);
 		assertTrue(item.toString().isBlank());
 	}
+	
+	// NullPointerException
 
 	@Test
 	@DisplayName("test if setId = null")
@@ -96,18 +104,7 @@ class ItemTest {
 	@Test
 	@DisplayName("test if constructor = null")
 	void constructorCheckNull() {
-		assertThrows(NullPointerException.class, () -> new ItemHelper(null));
+		assertThrows(NullPointerException.class, () -> new MockItemHelper(null));
 	}
 
 }
-
-/*-
- * new thread(() ->{
- * assertThrows(InterruptException.class,() -> remove)
- * }
- * )
- * thread.start()
- * thread.interrupt()
- * 
- * NoSuchElementException
- */

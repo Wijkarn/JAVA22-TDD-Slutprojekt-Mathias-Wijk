@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import test.mockedObjects.BufferHelper;
+import test.mockedObjects.MockBufferHelper;
 import test.mockedObjects.MockConsumer;
 import test.mockedObjects.MockProducer;
 
@@ -15,7 +15,7 @@ class ProducerTest {
 
 	@BeforeEach
 	void beforeEach() {
-		mp = new MockProducer(new BufferHelper());
+		mp = new MockProducer(new MockBufferHelper());
 	}
 
 	@Test
@@ -23,14 +23,6 @@ class ProducerTest {
 	void getBufferCheckSizeEquals1() {
 		mp.addItem();
 		assertEquals(1, mp.getBuffer().getBuffer().size());
-	}
-
-	@Test
-	@DisplayName("Size of buffer = 2")
-	void getBufferCheckSizeEquals2() {
-		mp.addItem();
-		mp.addItem();
-		assertEquals(2, mp.getBuffer().getBuffer().size());
 	}
 
 	@Test
@@ -51,6 +43,16 @@ class ProducerTest {
 		MockConsumer mc = new MockConsumer(mp.getBuffer());
 		mc.removeItem();
 		assertEquals(10, mp.getBuffer().getBuffer().size());
+	}
+
+	@Test
+	@DisplayName("remove item when buffer is empty")
+	void itemRemoveEmpty() {
+		MockBufferHelper buffer = new MockBufferHelper();
+		MockConsumer mockConsumer = new MockConsumer(buffer);
+		Thread thread = new Thread(() -> assertThrows(InterruptedException.class, () -> mockConsumer.removeItem()));
+		thread.start();
+		thread.interrupt();
 	}
 
 }

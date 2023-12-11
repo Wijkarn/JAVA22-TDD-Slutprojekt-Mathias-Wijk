@@ -2,9 +2,9 @@ package test.mockedObjects;
 
 import main.Item;
 
-public class ItemHelper extends Item {
+public class MockItemHelper extends Item {
 
-	public ItemHelper(String id) {
+	public MockItemHelper(String id) {
 		super(id);
 	}
 

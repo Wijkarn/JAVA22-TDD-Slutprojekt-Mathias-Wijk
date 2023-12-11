@@ -5,9 +5,9 @@ import main.Item;
 
 public class MockConsumer implements Consumer {
 
-	private BufferHelper buffer;
+	private MockBufferHelper buffer;
 
-	public MockConsumer(BufferHelper buffer) {
+	public MockConsumer(MockBufferHelper buffer) {
 		this.buffer = buffer;
 	}
 

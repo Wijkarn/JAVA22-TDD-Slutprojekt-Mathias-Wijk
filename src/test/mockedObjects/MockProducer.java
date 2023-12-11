@@ -5,9 +5,9 @@ import main.Producer;
 
 public class MockProducer implements Producer {
 
-	private BufferHelper buffer;
+	private MockBufferHelper buffer;
 
-	public MockProducer(BufferHelper buffer) {
+	public MockProducer(MockBufferHelper buffer) {
 		this.buffer = buffer;
 	}
 
@@ -19,7 +19,7 @@ public class MockProducer implements Producer {
 	public void stopRunning() {
 	}
 
-	public BufferHelper getBuffer() {
+	public MockBufferHelper getBuffer() {
 		return buffer;
 	}
 
