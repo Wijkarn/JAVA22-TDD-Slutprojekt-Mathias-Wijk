@@ -43,6 +43,14 @@ class ItemTest {
 		assertTrue(item.getId().isBlank());
 	}
 	
+	@Test
+	@DisplayName("Tests if numbers work in setId")
+	void setIdLetters() {
+		String id = "123";
+		item.setId(id);
+		assertEquals(id, item.getId());
+	}
+	
 	// Constructor
 
 	@Test
@@ -65,6 +73,14 @@ class ItemTest {
 		String id = "";
 		MockItemHelper item = new MockItemHelper(id);
 		assertTrue(item.getId().isBlank());
+	}
+	
+	@Test
+	@DisplayName("Tests if numbers work in constructor")
+	void itemConstructorLetters() {
+		String id = "123";
+		MockItemHelper item = new MockItemHelper(id);
+		assertEquals(id, item.getId());
 	}
 
 	// soString
@@ -91,6 +107,14 @@ class ItemTest {
 		String id = "";
 		item.setId(id);
 		assertTrue(item.toString().isBlank());
+	}
+	
+	@Test
+	@DisplayName("Tests if numbers work in toString")
+	void toStringLetters() {
+		String id = "123";
+		item.setId(id);
+		assertEquals(id, item.toString());
 	}
 	
 	// NullPointerException
