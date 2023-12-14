@@ -18,7 +18,7 @@ class ItemTest {
 	}
 
 	// setId
-	
+
 	@Test
 	@DisplayName("lower case setId")
 	void setIdLowerCase() {
@@ -42,7 +42,7 @@ class ItemTest {
 		item.setId(id);
 		assertTrue(item.getId().isBlank());
 	}
-	
+
 	@Test
 	@DisplayName("Tests if numbers work in setId")
 	void setIdLetters() {
@@ -50,7 +50,7 @@ class ItemTest {
 		item.setId(id);
 		assertEquals(id, item.getId());
 	}
-	
+
 	// Constructor
 
 	@Test
@@ -74,7 +74,7 @@ class ItemTest {
 		MockItemHelper item = new MockItemHelper(id);
 		assertTrue(item.getId().isBlank());
 	}
-	
+
 	@Test
 	@DisplayName("Tests if numbers work in constructor")
 	void itemConstructorLetters() {
@@ -84,7 +84,7 @@ class ItemTest {
 	}
 
 	// soString
-	
+
 	@Test
 	@DisplayName("toString upper case")
 	void toStringUpperCase() {
@@ -108,7 +108,7 @@ class ItemTest {
 		item.setId(id);
 		assertTrue(item.toString().isBlank());
 	}
-	
+
 	@Test
 	@DisplayName("Tests if numbers work in toString")
 	void toStringLetters() {
@@ -116,7 +116,7 @@ class ItemTest {
 		item.setId(id);
 		assertEquals(id, item.toString());
 	}
-	
+
 	// NullPointerException
 
 	@Test

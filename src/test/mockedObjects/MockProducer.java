@@ -19,12 +19,8 @@ public class MockProducer implements Producer {
 	public void stopRunning() {
 	}
 
-	public MockBufferHelper getBuffer() {
-		return buffer;
-	}
-
-	public void addItem() {
-		buffer.add(new Item("" + Math.floor(Math.random() * 100)));
+	public boolean addItem(Item item) {
+		return buffer.add(item);
 	}
 
 }
